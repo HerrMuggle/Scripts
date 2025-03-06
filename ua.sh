@@ -1,0 +1,1 @@
+Unlock-ADAccount -Identity "USERNAME"
