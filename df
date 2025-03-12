@@ -1,0 +1,284 @@
+[33mcommit e3409f6666d79d89369254ce7fe1b9f46e33606a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Sun Mar 9 16:41:12 2025 +0100
+
+    Active Directory Automation Menu
+    
+    A Python program with a user-friendly menu that automates Active Directory tasks. The program uses a simple text-based menu and allows the user to interact with the Active Directory via different options. This version will allow the user to perform tasks like creating, deleting, updating, and listing users, and adding/removing users from groups.
+    
+    To automate Active Directory tasks with Python, you’ll need to interact with Active Directory using the ldap3 library, which allows you to connect to and manage Active Directory through the LDAP protocol. Additionally, the program will need to authenticate using appropriate credentials and perform various Active Directory tasks such as adding, removing users, modifying attributes, and querying AD objects.
+    
+    Prerequisites:
+            1.      Install the ldap3 library:
+    pip install ldap3
+            2.      Ensure you have access to the Active Directory server, and you have the necessary credentials to perform actions.
+    
+    Explanation of Features:
+            1.      Menu-based Interface: The program presents a simple text menu with 8 options. The user can choose from creating/deleting users, updating attributes, viewing user details, listing all users, and adding/removing users from groups.
+            2.      User Input: Each function (e.g., create_user(), delete_user(), etc.) prompts the user to enter the necessary data, such as the username, group name, or new attribute value.
+            3.      Simple Error Handling: If the user inputs an invalid option, the program will notify them and ask for input again.
+            4.      Connecting to AD: The connect_to_ad() function establishes a connection to Active Directory using the LDAP protocol.
+            5.      Modular Functions: Each task (like creating a user or adding to a group) is encapsulated in a separate function, making it easy to maintain or add new features.
+    
+    Running the Program:
+            1.      When you run the program, the user will be presented with the menu options.
+            2.      Depending on the user’s choice, they will be prompted for relevant information (e.g., username, group name, etc.).
+            3.      The program will then carry out the chosen task and print a success message.
+    
+    Important Notes:
+            •       Update the AD_SERVER, AD_USER, AD_PASSWORD, and BASE_DN variables to match your Active Directory setup.
+            •       The program assumes you’re using LDAP with basic authentication.
+            •       You may need to tweak the code depending on your specific AD setup (e.g., handling SSL/TLS or multi-factor authentication).
+
+[33mcommit 34a7a57a6d7dc9420914ffc63748bc91efdcfc52[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Sat Mar 8 23:29:49 2025 +0100
+
+    DDoS Attack - SafeGuard tool to prevent DDos Attacks
+    
+    How to Run:
+            1.      Make sure that the log files you want to monitor exist (e.g., /var/log/auth.log, /var/log/apache2/access.log, /var/log/nginx/access.log).
+            2.      Run the script with appropriate permissions:
+    
+    sudo python3 safeguard.py
+    
+    What it does:
+    1.      Multiple Log Files:
+            •       The script monitors multiple log files (e.g., /var/log/auth.log, /var/log/apache2/access.log, /var/log/nginx/access.log). You can add any additional logs to LOG_FILES to monitor more sources.
+            2.      Custom Rules:
+            •       The script includes custom rules for different services (SSH, Apache, Nginx). Each service has its own regex to detect failed login attempts or unauthorized access, and a maximum threshold for failed attempts.
+            •       SSH: Looks for failed SSH login attempts.
+            •       Apache/Nginx: Looks for HTTP 401 unauthorized attempts, simulating brute-force attacks on a web server.
+            3.      Thresholds for Different Services:
+            •       The thresholds for blocking are configurable for each service. For example, you may block an IP after 5 failed SSH attempts but only 3 failed HTTP attempts.
+            4.      Error Handling for Missing Logs:
+            •       If any of the log files specified in LOG_FILES do not exist, an error is logged, and the script continues with the remaining files.
+            5.      Log Entry Parsing:
+            •       The script parses logs to detect suspicious activity based on custom regex patterns. If the number of failed attempts exceeds the threshold for a specific service, the IP is blocked temporarily.
+            6.      Auto-Unblocking:
+            •       IP addresses are automatically unblocked after the block time expires (e.g., 5 minutes).
+    
+    Customization:
+            •       You can add more services to the CUSTOM_RULES dictionary with their respective regex patterns and threshold values.
+            •       Adjust the MAX_FAILED_ATTEMPTS, BLOCK_TIME, and WINDOW_TIME to suit your needs.
+
+[33mcommit ae1197c843970cc1baa68184cc18f51eaf71d28e[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 12:57:03 2025 +0100
+
+    Multithreaded IP Scanner (Saves to ip.txt) Python
+    
+    Enhancements in This Version
+    
+    - Writes to ip.txt → All scanned live hosts are saved to the file.
+    - Uses a lock → Prevents file corruption from multiple threads writing simultaneously.
+    - Clears ip.txt before scanning → Ensures fresh results on every scan.
+    
+    How to Run:
+    1.      Install Scapy (if not installed):
+    
+    pip install scapy
+    
+    
+    2.      Run the script:
+    
+    python ip_scanner.py
+    
+    Syntax:
+    3.      Enter the subnet (e.g., 192.168.1.0/24).
+    4.      View the results in ip.txt:
+    cat ip.txt
+
+[33mcommit 12632d76475200f45c47ef870746ef12df0aee99[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 11:31:21 2025 +0100
+
+    SOC / Cybersecurity - Enable Windows Defender Scan (PowerShell)
+    
+    Runs a quick scan using Windows Defender.
+
+[33mcommit 7c0db1b3a3394972f436ee005d93bef82ae9129d[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 11:28:52 2025 +0100
+
+    SOC/ Cybersecurity - Script to Detect and Kill Suspicious Processes (PowerShell)
+    
+    Detect & Kill Suspicious Processes
+
+[33mcommit a395a549a71c7bd771cb37e3b366dbceaff3c03e[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 11:24:40 2025 +0100
+
+    SOC / Cybersecurity - Automated Log Backup (PowerShell)
+    
+    Exports security logs for analysis.
+
+[33mcommit 32165ce5e55eeb42effe3e4a63ab73b70fbc2a7d[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 11:18:23 2025 +0100
+
+    Scan for Open Ports (PowerShell)
+    
+    Checks if a specific port is open on a target system.
+
+[33mcommit 91e9e2b431c129df5e76ed5c997c7980a6bb8037[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 11:05:55 2025 +0100
+
+    SOC / Cybersecurity - CPU check. Check Running Processes for Malware (PowerShell)
+    
+    Identifies high CPU usage processes.
+
+[33mcommit a6bd3231158c971f5bdc234fc99eab4dcd13af2f[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 11:02:37 2025 +0100
+
+    SOC / Cybersecurity - List Open Network Connections (PowerShell)
+
+[33mcommit 75b1a311540fc5d944818c05c7dc76582f38be3b[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 10:45:39 2025 +0100
+
+    Analyze Firewall Logs (PowerShell)
+    
+    Lists active firewall rules.
+
+[33mcommit e056a60b617f78ec7443e9ff73a994723a45c9e0[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 10:24:14 2025 +0100
+
+    Monitor USB Device Insertions (PowerShell)
+    
+    Detects recent USB activity
+
+[33mcommit e2f9ab32724afabc55d2f5c61600d86fe143dc04[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 10:20:45 2025 +0100
+
+    SOC / Cybersecurity - Log Analysis Shows failed login attempts (Event ID 4625)
+    
+    Shows failed login attempts (Event ID 4625)
+    
+    Security monitoring, log analysis, and automation.
+
+[33mcommit 81ff90e3ac40f2a007b25a6de2398fd5b318e9d1[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 10:15:18 2025 +0100
+
+    Get Logged In Users (PowerShell)
+    
+    Show users that are logged in.
+
+[33mcommit 9eade598a403194d3de7e83ad3978c3319af24dd[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 10:12:18 2025 +0100
+
+    Restart a Remote PC (PowerShell)
+    
+    Remote Assistance
+    
+    Restart Remote PC
+
+[33mcommit 519d4725c37831b2a928a210b9187a90ea91b3cc[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 10:02:13 2025 +0100
+
+    Check Locked Out Users (PowerShell)
+
+[33mcommit e1cb040ff79d283031b48a9ccbcb264ca2a4c5ec[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 09:59:34 2025 +0100
+
+    Unlock a User Account (PowerShell)
+
+[33mcommit 866335ef9a32be1edaa0eed741794ccff787d5f2[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 09:52:50 2025 +0100
+
+    Force Password Reset for a User (PowerShell)
+    
+    Account Management
+    
+    Force Reset for User.
+
+[33mcommit a3636c85d12cbf433c6ee5c92a066e0a9b3e7eff[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 09:32:57 2025 +0100
+
+    Get Windows Update Log
+    
+    Automate Windows Update Check (PowerShell)
+
+[33mcommit 293c269611d563ac8e8b07fac43265cc9b152099[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 09:29:29 2025 +0100
+
+    Clear DNS Cache (PowerShell)
+    
+    This will clear the cache of DNS.
+
+[33mcommit 837266c046c81377202a50faa134070ae65634a3[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 09:15:28 2025 +0100
+
+    Check Installed Software (PowerShell)
+    
+    Check Installed Software (PowerShell)
+    
+    Lists installed software on a machine.
+
+[33mcommit 278738b8ae9fc5a919853550581ea5607e7556fa[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 09:11:56 2025 +0100
+
+    Network Diagnostic (PowerShell)
+    
+    Checks IP configuration and internet connectivity
+
+[33mcommit 7c666d90f8993bf81978ffd257d37a052f47a4d5[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Thu Mar 6 08:56:39 2025 +0100
+
+    System Information & Troubleshooting - Windows System Info (PowerShell)
+    
+    1. Helpdesk Scripts
+    
+    These scripts help automate common IT support tasks.
+    
+    A. System Information & Troubleshooting
+            •       Windows System Info (PowerShell)
+    
+    Provides essential system details.
+
+[33mcommit 08b6d1ba64882a9cdf963d6eb09e9dfdb2af4efb[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Wed Mar 5 17:34:41 2025 +0100
+
+    Update README.md
+
+[33mcommit 2c12fd14d3009562116e5dc9203fd4b5b5fdb88f[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Wed Mar 5 17:31:30 2025 +0100
+
+    Create ipsweep.sh
+    
+    IP sweep bash script
+    
+    Description:
+    A simple Bash script to perform an IP sweep, scanning a range of IP addresses to check for active hosts. The script uses ping or nmap to detect live devices within a specified subnet, making it useful for network diagnostics and security assessments.
+    
+    Features:
+            •       Scans a given subnet for active IP addresses
+            •       Uses ping or nmap for detection
+            •       Outputs a list of responsive hosts
+            •       Lightweight and easy to use
+    
+    Syntax:
+    ./ipsweep.sh 192.168.58 > ipsweep.txt
+    for ip in $(cat ipsweep.txt); do nmap $ip; done
+
+[33mcommit 162964940085611a3bae48d10792342b9fd1b87f[m
+Author: HerrMuggle <199929981+HerrMuggle@users.noreply.github.com>
+Date:   Wed Mar 5 16:38:52 2025 +0100
+
+    Initial commit
