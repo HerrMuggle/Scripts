@@ -1,0 +1,27 @@
+× nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: enabled)
+     Active: failed (Result: exit-code) since Fri 2025-03-14 11:26:04 UTC; 3min 58s ago
+       Docs: man:nginx(8)
+    Process: 5704 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=1/FAILURE)
+        CPU: 35ms
+
+Mar 14 11:26:04 nachoserver systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+Mar 14 11:26:04 nachoserver nginx[5704]: 2025/03/14 11:26:04 [emerg] 5704#5704: invalid parameter "nachoserver" in /etc/nginx/sites-enabled/default:22
+Mar 14 11:26:04 nachoserver nginx[5704]: nginx: configuration file /etc/nginx/nginx.conf test failed
+Mar 14 11:26:04 nachoserver systemd[1]: nginx.service: Control process exited, code=exited, status=1/FAILURE
+Mar 14 11:26:04 nachoserver systemd[1]: nginx.service: Failed with result 'exit-code'.
+Mar 14 11:26:04 nachoserver systemd[1]: Failed to start nginx.service - A high performance web server and a reverse proxy server.
+
+× apache2.service - The Apache HTTP Server
+     Loaded: loaded (/usr/lib/systemd/system/apache2.service; enabled; preset: enabled)
+     Active: failed (Result: exit-code) since Fri 2025-03-14 11:25:21 UTC; 4min 41s ago
+       Docs: https://httpd.apache.org/docs/2.4/
+    Process: 5694 ExecStart=/usr/sbin/apachectl start (code=exited, status=1/FAILURE)
+        CPU: 121ms
+
+Mar 14 11:25:21 nachoserver systemd[1]: Starting apache2.service - The Apache HTTP Server...
+Mar 14 11:25:21 nachoserver apachectl[5696]: AH00526: Syntax error on line 5 of /etc/apache2/ports.conf:
+Mar 14 11:25:21 nachoserver apachectl[5696]: Listen requires 1 or 2 arguments.
+Mar 14 11:25:21 nachoserver systemd[1]: apache2.service: Control process exited, code=exited, status=1/FAILURE
+Mar 14 11:25:21 nachoserver systemd[1]: apache2.service: Failed with result 'exit-code'.
+Mar 14 11:25:21 nachoserver systemd[1]: Failed to start apache2.service - The Apache HTTP Server.
