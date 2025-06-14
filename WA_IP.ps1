@@ -1,4 +1,4 @@
-# WA_IP.ps1
+# WA_IP.ps1 
 
 # Function to list network adapters
 function Get-NetworkAdapters {
